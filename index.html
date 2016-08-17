@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<script type='text/javascript'
+    src='freedom.js'
+    data-manifest='manifest.json'>
+  {
+    "strongIsolation": true,
+    "debug": true,
+    "stayLocal": true
+  }
+</script>
+    
+<script type='text/javascript'>
+window.onload = function() {
+console.log("Window Loaded");
+var input = document.getElementById('text­input');
+input.onkeydown = function(evt) {
+window.freedom.emit('update­text', input.value);
+};
+};
+
+freedom.on('display­text', function(data) {
+document.getElementById('text­input').value = data;
+});
+</script>
+
+</head>
+<body>
+    
+    <textarea id='text­input' rows="20" class='span10'></textarea>
+    
+</body>
+</html>
